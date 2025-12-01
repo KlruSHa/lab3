@@ -116,7 +116,17 @@ def quick_sort(a: list[int]) -> list[int]:
 
 
 def counting_sort(a: list[int]) -> list[int]:
-    pass
+    m = max(a)
+    c = [0] * (m + 1)
+    res = []
+
+    for elem in a:
+        c[elem] += 1
+    for i in range(len(c)):
+        count = c[i]
+        for j in range(count):
+            res.append(i)
+    return res
 
 
 def radix_sort(a: list[int], base: int = 10) -> list[int]:
@@ -133,7 +143,7 @@ def heap_sort(a: list[int]) -> list[int]:
 
 def main():
     a = [7, 3, 9, 2, 5, 8, 1, 6]
-    print(quick_sort(a))
+    print(counting_sort(a))
 
 
 if __name__ == "__main__":
