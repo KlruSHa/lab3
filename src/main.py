@@ -97,7 +97,22 @@ def bubble_sort(a: list[int]) -> list[int]:
 
 
 def quick_sort(a: list[int]) -> list[int]:
-    pass
+    if len(a) <= 1:
+        return a
+
+    left = []
+    mid = []
+    right = []
+    pivot = a[len(a) // 2]
+
+    for elem in a:
+        if elem < pivot:
+            left.append(elem)
+        elif elem > pivot:
+            right.append(elem)
+        else:
+            mid.append(elem)
+    return quick_sort(left) + mid + quick_sort(right)
 
 
 def counting_sort(a: list[int]) -> list[int]:
@@ -117,7 +132,8 @@ def heap_sort(a: list[int]) -> list[int]:
 
 
 def main():
-    print()
+    a = [7, 3, 9, 2, 5, 8, 1, 6]
+    print(quick_sort(a))
 
 
 if __name__ == "__main__":
