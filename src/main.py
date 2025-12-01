@@ -47,7 +47,7 @@ def factorial_recursive(n: int) -> int:
 def fibo(n: int) -> int:
     a, b, res = 1, 1, 1
     for i in range(n - 2):
-        res = a + bcd
+        res = a + b
         a = b
         b = res
     return res
