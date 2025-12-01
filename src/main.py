@@ -88,8 +88,36 @@ def fibo_recursive(n: int) -> int:
         return 1
 
 
+def bubble_sort(a: list[int]) -> list[int]:
+    for i in range(1, len(a) + 1):
+        for j in range(len(a) - i):
+            if a[j] > a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+    return a
+
+
+def quick_sort(a: list[int]) -> list[int]:
+    pass
+
+
+def counting_sort(a: list[int]) -> list[int]:
+    pass
+
+
+def radix_sort(a: list[int], base: int = 10) -> list[int]:
+    pass
+
+
+def bucket_sort(a: list[float], buckets: int | None = None) -> list[float]:
+    pass
+
+
+def heap_sort(a: list[int]) -> list[int]:
+    pass
+
+
 def main():
-    print(fibo_recursive(4))
+    print()
 
 
 if __name__ == "__main__":
