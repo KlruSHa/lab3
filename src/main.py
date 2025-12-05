@@ -130,7 +130,23 @@ def counting_sort(a: list[int]) -> list[int]:
 
 
 def radix_sort(a: list[int], base: int = 10) -> list[int]:
-    pass
+    bins = [[] for i in range(base)]
+    maxi = -1
+    for elem in a:
+        if len(str(elem)) > maxi:
+            maxi = len(str(elem))
+
+    for i in range(0, maxi):
+        for elem in a:
+            digit = (elem // (base ** i)) % base
+            bins[digit].append(elem)
+        a = []
+        for i in bins:
+            for j in i:
+                a.append(j)
+
+        bins = [[] for i in range(base)]
+    return a
 
 
 def bucket_sort(a: list[float], buckets: int | None = None) -> list[float]:
@@ -143,7 +159,7 @@ def heap_sort(a: list[int]) -> list[int]:
 
 def main():
     a = [7, 3, 9, 2, 5, 8, 1, 6]
-    print(counting_sort(a))
+    print(radix_sort(a))
 
 
 if __name__ == "__main__":
