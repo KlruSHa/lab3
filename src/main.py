@@ -1,7 +1,7 @@
-from sort.bucket_sort import *
-from sort.radix_sort import *
-from sort.counting_sort import *
-from fibo_func import *
+from src.sort.bucket_sort import *
+from src.sort.radix_sort import *
+from src.sort.counting_sort import *
+from src.fibo_func import *
 
 
 def main():

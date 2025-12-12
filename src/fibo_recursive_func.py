@@ -1,4 +1,4 @@
-from errors import NegativeFibonacciError, NonIntegerError
+from src.errors import NegativeFibonacciError, NonIntegerError
 
 
 def fibo_recursive(n: int) -> int:

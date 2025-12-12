@@ -1,4 +1,4 @@
-from insertion_sort import insertion_sort
+from src.sort.insertion_sort import insertion_sort
 
 
 def bucket_sort(a: list[float], base: int = 10) -> list[float]:

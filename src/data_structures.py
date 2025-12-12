@@ -1,4 +1,4 @@
-from errors import EmptyStackError
+from src.errors import EmptyStackError
 
 
 class Stack:  # Обычная реализация стека

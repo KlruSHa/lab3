@@ -1,4 +1,4 @@
-from errors import NonIntegerError
+from src.errors import NonIntegerError
 
 
 def counting_sort(a: list[int]) -> list[int]:

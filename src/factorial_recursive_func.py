@@ -1,4 +1,4 @@
-from errors import *
+from src.errors import *
 
 
 def factorial_recursive(n: int) -> int:
