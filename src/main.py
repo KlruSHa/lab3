@@ -130,11 +130,8 @@ def counting_sort(a: list[int]) -> list[int]:
 
 
 def radix_sort(a: list[int], base: int = 10) -> list[int]:
-    bins = [[] for i in range(base)]
-    maxi = -1
-    for elem in a:
-        if len(str(elem)) > maxi:
-            maxi = len(str(elem))
+    bins = [[] for _ in range(base)]
+    maxi = len(str(max(a)))
 
     for i in range(0, maxi):
         for elem in a:
@@ -145,21 +142,76 @@ def radix_sort(a: list[int], base: int = 10) -> list[int]:
             for j in i:
                 a.append(j)
 
-        bins = [[] for i in range(base)]
+        bins = [[] for _ in range(base)]
     return a
 
 
-def bucket_sort(a: list[float], buckets: int | None = None) -> list[float]:
-    pass
+def insertion_sort(b):
+    for i in range(1, len(b)):
+        key = b[i]
+        j = i - 1
+        while j >= 0 and key < b[j]:
+            b[j + 1] = b[j]
+            j -= 1
+        b[j + 1] = key
+
+
+def bucket_sort(a: list[float], base: int = 10) -> list[float]:
+    mini = min(a)
+    maxi = max(a)
+    d = maxi - mini
+
+    if d == 0:
+        return a
+
+    bins = [[] for _ in range(base)]
+
+    for elem in a:
+        norm = (elem - mini) / d
+        idx = int(base * norm)
+        if idx == base:
+            idx -= 1
+        bins[idx].append(elem)
+
+    a = []
+    for b in bins:
+        insertion_sort(b)
+        for elem in b:
+            a.append(elem)
+    return a
 
 
 def heap_sort(a: list[int]) -> list[int]:
-    pass
+    def sift(n, i):
+        largest = i
+        l = 2 * i + 1
+        r = 2 * i + 2
+
+        if l < n and a[l] > a[largest]:
+            largest = l
+
+        if r < n and a[r] > a[largest]:
+            largest = r
+
+        if largest != i:
+            a[i], a[largest] = a[largest], a[i]
+            sift(n, largest)
+
+    n = len(a)
+
+    for i in range(n // 2 - 1, -1, -1):
+        sift(n, i)
+
+    for i in range(n - 1, 0, -1):
+        a[i], a[0] = a[0], a[i]
+        sift(i, 0)
+
+    return a
 
 
 def main():
     a = [7, 3, 9, 2, 5, 8, 1, 6]
-    print(radix_sort(a))
+    print(heap_sort(a))
 
 
 if __name__ == "__main__":
